@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Título Padrão{% endblock %}</title>
+    <!-- Adicione seus links de estilo e scripts aqui -->
+</head>
+<body>
+    <header>
+        <!-- Barra de navegação ou cabeçalho comum -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="{% url 'all_books' %}">Books</a></li>
+                <!-- Adicione mais itens de menu conforme necessário -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+            <!-- Este bloco será substituído pelo conteúdo específico de cada página -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Rodapé comum ou links de rodapé -->
+        <p>&copy; 2023 Seu Nome. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Adicione seus scripts aqui, se necessário -->
+</body>
+</html>

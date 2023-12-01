@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Empréstimo de Livro</title>
+</head>
+<body>
+    <form method="POST" class="container mt-5">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.book.id_for_label }}">Livro</label>
+            {{ form.book }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.borrower_name.id_for_label }}">Seu Nome</label>
+            {{ form.borrower_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.borrow_date.id_for_label }}">Data de Empréstimo</label>
+            {{ form.borrow_date }}
+        </div>
+        <button type="submit" class="btn btn-success mt-2">Emprestar</button>
+    </form>
+</body>
+</html>

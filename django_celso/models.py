@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Categories(models.Model):
     name = models.CharField(max_length=256)
@@ -20,6 +22,9 @@ class Books(models.Model):
     discount = models.IntegerField()
     created_at = models.DateField()
     in_stock = models.BooleanField(default=False)
+    # emprestado = models.BooleanField(default=False)
+    # usuario_que_pegou = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    # data_devolucao = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -29,3 +34,16 @@ class Books(models.Model):
         verbose_name_plural = 'Books'
 
 
+class Loan(models.Model):
+    book = models.ForeignKey(Books, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_borrowed = models.DateTimeField(auto_now_add=True)
+    return_due_date = models.DateTimeField()
+    returned = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.book.title}"
+    
+
+
+    
